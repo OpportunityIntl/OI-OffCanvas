@@ -1,0 +1,93 @@
+$drawer-width: 300px;
+
+body {
+  position: relative;
+  right: 0;
+  transition: left .5s, right .5s;
+  
+  &.open-drawer {
+    right: $drawer-width;
+    left: inherit;
+    
+    .fixed {
+      right: $drawer-width;
+    }
+    
+    .offcanvas-overlay {
+      opacity: 1;
+    }
+    
+    button.offcanvas-trigger {
+      &:before {
+        content: "\e608";
+      }
+    }
+  }
+  
+  &.animate-drawer {
+    .fixed {
+      left: inherit;
+    }
+    .offcanvas-overlay {
+      display: block;
+    }
+  }
+}
+
+.offcanvas-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 100%;
+  background-color: rgba(0,0,0,.2);
+  opacity: 0;
+  display: none;
+  transition: opacity .5s;
+}
+
+button.offcanvas-trigger {
+  font-family: 'OI-icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  &:before {
+    content: "\e616";
+  }
+}
+
+.fixed {
+  right: 0;
+  transition: left .5s, right .5s;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -$drawer-width;
+  z-index: 1;
+  width: $drawer-width;
+  height: 100%;
+  background-color: #fff;
+  transition: left .5s, right .5s;
+  
+  &.left {
+    left: -$drawer-width;
+    right: auto;
+  }
+  
+  &.show {
+    right: 0;
+    
+    &.left {
+      left: 0;
+    }
+  }
+}

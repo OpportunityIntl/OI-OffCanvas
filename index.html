@@ -9,8 +9,53 @@
 
     <script src="//use.typekit.net/owg8owx.js"></script>
     <script type="text/javascript">try {Typekit.load();} catch (e) {}</script>
+    
+    <style>
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #222;
+        color: #fff;
+        width: 100%;
+        height: 40px;
+        z-index: 2;
+      }
+
+      .offcanvas-trigger {
+        position: absolute;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+        text-align: center;
+        line-height: 40px;
+        color: #fff;
+      }
+      
+      .nav-placeholder {
+        height: 40px;
+      }
+    </style>
   </head>
   <body>
+    <nav class="fixed">
+      <button type="button" class="reset offcanvas-trigger"></button>
+    </nav>
+    <div class="nav-placeholder"></div>
+    <div class="offcanvas-overlay"></div>
+    <div class="drawer">
+      <div class="padding-2x">
+        <h2 class="small">Menu</h2>
+        <hr>
+        <ul class="no-list-style">
+          <li>Link 1</li>
+          <li>Link 2</li>
+          <li>Link 3</li>
+        </ul>
+      </div>
+    </div>
     <section class="padding-3x-2x">
       <div class="contained-680 centered">
         <h1 class="align-center large brand-teal">Off-Canvas Demo</h1>
@@ -27,7 +72,9 @@
     <script type="text/javascript" src="dist/OI.offcanvas.min.js"></script>
 
     <script>
-      
+      drawer = new OffCanvas($('.drawer'), {
+        trigger: $('.offcanvas-trigger')
+      });
     </script>
   </body>
 </html>

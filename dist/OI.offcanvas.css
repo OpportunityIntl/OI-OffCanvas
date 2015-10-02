@@ -1,1 +1,82 @@
+body {
+  position: relative;
+  right: 0;
+  -webkit-transition: left .5s, right .5s;
+          transition: left .5s, right .5s;
+}
+body.open-drawer {
+  right: 300px;
+  left: inherit;
+}
+body.open-drawer .fixed {
+  right: 300px;
+}
+body.open-drawer .offcanvas-overlay {
+  opacity: 1;
+}
+body.open-drawer button.offcanvas-trigger:before {
+  content: "\e608";
+}
+body.animate-drawer .fixed {
+  left: inherit;
+}
+body.animate-drawer .offcanvas-overlay {
+  display: block;
+}
 
+.offcanvas-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  display: none;
+  -webkit-transition: opacity .5s;
+          transition: opacity .5s;
+}
+
+button.offcanvas-trigger {
+  font-family: 'OI-icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+button.offcanvas-trigger:before {
+  content: "\e616";
+}
+
+.fixed {
+  right: 0;
+  -webkit-transition: left .5s, right .5s;
+          transition: left .5s, right .5s;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  z-index: 1;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  -webkit-transition: left .5s, right .5s;
+          transition: left .5s, right .5s;
+}
+.drawer.left {
+  left: -300px;
+  right: auto;
+}
+.drawer.show {
+  right: 0;
+}
+.drawer.show.left {
+  left: 0;
+}
