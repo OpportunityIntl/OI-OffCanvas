@@ -38,11 +38,24 @@ module.exports = function(grunt) {
       }
     },
     
+    css_mqpacker: {
+      production: {
+        options: {
+          map: false
+        },
+
+        expand: true,
+        cwd: 'dist/',
+        src: '*.css',
+        dest: 'dist/'
+      }
+    },
+    
     postcss: {
       options: {
         map: false,
         processors: [
-          require('autoprefixer')
+          require('autoprefixer'),
         ]
       },
       production: {
@@ -73,8 +86,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-postcss');
+  grunt.loadNpmTasks('grunt-css-mqpacker');
 
   // Default task(s).
-  grunt.registerTask('default', [ 'sass:dev', 'sass:production', 'uglify:production', 'postcss:production' ] );
+  grunt.registerTask('default', [ 'sass:dev', 'sass:production', 'uglify:production', 'css_mqpacker', 'postcss:production' ] );
 
 };
