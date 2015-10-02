@@ -25,6 +25,8 @@ var OffCanvas = function(elem, options) {
       _this.elem.addClass('show');
     }, 1);
     _this.status = 'open';
+    
+    bindCloseHandlers();
   };
   
   this.close = function() {
@@ -35,6 +37,8 @@ var OffCanvas = function(elem, options) {
       _this.elem.removeClass('animate');
     }, 500);
     _this.status = 'closed';
+    
+    unbindCloseHandlers();
   };
   
   this.options.trigger.on('click', function() {
@@ -44,4 +48,21 @@ var OffCanvas = function(elem, options) {
       _this.open();
     }
   });
+  
+  function bindCloseHandlers() {
+    $(document).bind('keyup.offcanvas', function (e) {
+      if (e.keyCode == '27') {
+        _this.close();
+      }
+    });
+    
+    _this.options.overlay.bind('click.offcanvas', function() {
+      _this.close();
+    });
+  }
+  
+  function unbindCloseHandlers() {
+    $(document).unbind('keyup.offcanvas');
+    _this.options.overlay.unbind('click.offcanvas');
+  }
 };
