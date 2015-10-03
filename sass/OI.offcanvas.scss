@@ -3,7 +3,6 @@ $drawer-width: 300px;
 body {
   position: relative;
   right: 0;
-  transition: left .5s, right .5s;
   
   &.open-drawer {
     right: $drawer-width;
@@ -25,6 +24,8 @@ body {
   }
   
   &.animate-drawer {
+    transition: left .5s, right .5s;
+    
     .fixed {
       left: inherit;
     }
@@ -69,6 +70,7 @@ button.offcanvas-trigger {
 }
 
 .drawer {
+  display: none;
   position: fixed;
   top: 0;
   right: -$drawer-width;
@@ -76,11 +78,15 @@ button.offcanvas-trigger {
   width: $drawer-width;
   height: 100%;
   background-color: #fff;
-  transition: left .5s, right .5s;
   
   &.left {
     left: -$drawer-width;
     right: auto;
+  }
+  
+  &.animate {
+    display: block;
+    transition: left .5s, right .5s;
   }
   
   &.show {

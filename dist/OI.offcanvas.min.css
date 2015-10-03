@@ -2,11 +2,12 @@
  * Copyright (c) 2015 Opportunity International 
  */
 
-body { position: relative; right: 0; -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }
+body { position: relative; right: 0; }
 body.open-drawer { right: 300px; left: inherit; }
 body.open-drawer .fixed { right: 300px; }
 body.open-drawer .offcanvas-overlay { opacity: 1; }
 body.open-drawer button.offcanvas-trigger:before { content: "\e608"; }
+body.animate-drawer { -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }
 body.animate-drawer .fixed { left: inherit; }
 body.animate-drawer .offcanvas-overlay { display: block; }
 
@@ -17,7 +18,8 @@ button.offcanvas-trigger:before { content: "\e616"; }
 
 .fixed { right: 0; -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }
 
-.drawer { position: fixed; top: 0; right: -300px; z-index: 1; width: 300px; height: 100%; background-color: #fff; -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }
+.drawer { display: none; position: fixed; top: 0; right: -300px; z-index: 1; width: 300px; height: 100%; background-color: #fff; }
 .drawer.left { left: -300px; right: auto; }
+.drawer.animate { display: block; -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }
 .drawer.show { right: 0; }
 .drawer.show.left { left: 0; }
