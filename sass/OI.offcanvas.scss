@@ -79,8 +79,8 @@ button.offcanvas-trigger {
   width: $drawer-width;
   height: 100%;
   background-color: #fff;
-  overflow: auto;
-  -webkit-overflow-scrolling: scroll;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   
   &.left {
     left: -$drawer-width;
