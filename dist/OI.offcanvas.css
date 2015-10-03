@@ -5,6 +5,7 @@ body {
 body.open-drawer {
   right: 300px;
   left: inherit;
+  overflow: hidden;
 }
 body.open-drawer .fixed {
   right: 300px;
@@ -70,6 +71,8 @@ button.offcanvas-trigger:before {
   width: 300px;
   height: 100%;
   background-color: #fff;
+  overflow: auto;
+  -webkit-overflow-scrolling: scroll;
 }
 .drawer.left {
   left: -300px;
