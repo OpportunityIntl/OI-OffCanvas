@@ -14,7 +14,8 @@ var OffCanvas = function(elem, options) {
 
   this.options = $.extend({
     trigger: $('.offcanvas-trigger'),
-    overlay: $('.offcanvas-overlay')
+    overlay: $('.offcanvas-overlay'),
+    breakpoint: null
   }, options);
   
   this.open = function() {
@@ -65,4 +66,16 @@ var OffCanvas = function(elem, options) {
     $(document).unbind('keyup.offcanvas');
     _this.options.overlay.unbind('click.offcanvas');
   }
+  
+  function checkBreakpoint() {
+    if (_this.status === 'open' && _this.options.breakpoint !== null) {
+      if ($(window).width() > _this.options.breakpoint) {
+        _this.close();
+      }
+    }
+  }
+  
+  $(window).on('resize.offcanvas', function() {
+    checkBreakpoint();
+  });
 };
