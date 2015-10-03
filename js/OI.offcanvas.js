@@ -57,13 +57,13 @@ var OffCanvas = function(elem, options) {
       }
     });
     
-    _this.options.overlay.bind('click.offcanvas', function() {
-      _this.close();
-    });
+    _this.elem.find('.close').bind('click.offcanvas', _this.close);
+    _this.options.overlay.bind('click.offcanvas', _this.close);
   }
   
   function unbindCloseHandlers() {
     $(document).unbind('keyup.offcanvas');
+    _this.elem.find('.close').unbind('click.offcanvas');
     _this.options.overlay.unbind('click.offcanvas');
   }
   
