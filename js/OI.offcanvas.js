@@ -1,7 +1,9 @@
 (function($){
   $.fn.offcanvas = function(options) {
     return this.each(function() {
-      new OffCanvas($(this), options);
+      if (!$(this).data('offcanvas')) {
+        $(this).data('offcanvas', new OffCanvas($(this), options));
+      }
     });
   };
 })(jQuery);
