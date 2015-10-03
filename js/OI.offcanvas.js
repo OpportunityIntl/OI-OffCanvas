@@ -15,10 +15,19 @@ var OffCanvas = function(elem, options) {
   this.options = $.extend({
     trigger: $('.offcanvas-trigger'),
     overlay: $('.offcanvas-overlay'),
-    breakpoint: null
+    breakpoint: null,
+    beforeOpen: function() {},
+    afterOpen: function() {},
+    beforeClose: function() {},
+    afterClose: function() {}
   }, options);
   
   this.open = function() {
+    
+    if (_this.options.beforeOpen.call(_this, _this.elem) === false) {
+      return false;
+    }
+    
     body.addClass('animate-drawer');
     _this.elem.addClass('animate');
     setTimeout(function() {
@@ -28,18 +37,29 @@ var OffCanvas = function(elem, options) {
     _this.status = 'open';
     
     bindCloseHandlers();
+    
+    setTimeout(function() {
+      _this.options.afterOpen.call(_this, _this.elem);
+    }, 500);
   };
   
   this.close = function() {
+    if (_this.options.beforeClose.call(_this, _this.elem) === false) {
+      return false;
+    }
+    
     body.removeClass('open-drawer');
     _this.elem.removeClass('show');
-    setTimeout(function() {
-      body.removeClass('animate-drawer');
-      _this.elem.removeClass('animate');
-    }, 500);
+    
     _this.status = 'closed';
     
     unbindCloseHandlers();
+    
+    setTimeout(function() {
+      body.removeClass('animate-drawer');
+      _this.elem.removeClass('animate');
+      _this.options.afterClose.call(_this, _this.elem);
+    }, 500);
   };
   
   this.options.trigger.on('click', function() {
