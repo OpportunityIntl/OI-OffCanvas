@@ -74,10 +74,6 @@ button.offcanvas-trigger:before {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
-.drawer.left {
-  left: -300px;
-  right: auto;
-}
 .drawer.animate {
   display: block;
   -webkit-transition: left .5s, right .5s;
@@ -85,7 +81,4 @@ button.offcanvas-trigger:before {
 }
 .drawer.show {
   right: 0;
-}
-.drawer.show.left {
-  left: 0;
 }
