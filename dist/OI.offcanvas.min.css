@@ -7,7 +7,6 @@ body.open-drawer { overflow: hidden; }
 body.open-drawer .offcanvas-overlay { opacity: 1; }
 body.open-drawer button.offcanvas-trigger:before { content: "\e608"; }
 body.animate-drawer { -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }
-body.animate-drawer .fixed { left: inherit; }
 body.animate-drawer .offcanvas-overlay { display: block; }
 
 .offcanvas-overlay { position: fixed; top: 0; left: 0; right: 0; z-index: 1; height: 100%; background-color: rgba(0, 0, 0, 0.7); opacity: 0; display: none; -webkit-transition: opacity .5s; transition: opacity .5s; }
@@ -15,7 +14,7 @@ body.animate-drawer .offcanvas-overlay { display: block; }
 button.offcanvas-trigger { font-family: 'OI-icons'; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 button.offcanvas-trigger:before { content: "\e616"; }
 
-.fixed { right: 0; -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }
+.fixed { -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }
 
 .drawer { display: none; position: fixed; top: 0; z-index: 1; height: 100%; background-color: #fff; overflow-y: scroll; -webkit-overflow-scrolling: touch; }
 .drawer.animate { display: block; -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }

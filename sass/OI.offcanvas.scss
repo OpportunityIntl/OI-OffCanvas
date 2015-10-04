@@ -21,9 +21,6 @@ body {
   &.animate-drawer {
     transition: left .5s, right .5s;
     
-    .fixed {
-      left: inherit;
-    }
     .offcanvas-overlay {
       display: block;
     }
@@ -60,7 +57,6 @@ button.offcanvas-trigger {
 }
 
 .fixed {
-  right: 0;
   transition: left .5s, right .5s;
 }
 

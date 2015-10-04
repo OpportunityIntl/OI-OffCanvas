@@ -13,6 +13,7 @@ var OffCanvas = function(elem, options) {
   var body = $('body');
   this.elem = $(elem);
   this.status = 'closed';
+  this.offset = 0;
 
   this.options = $.extend({
     trigger: $('.offcanvas-trigger'),
@@ -37,6 +38,7 @@ var OffCanvas = function(elem, options) {
     setTimeout(function() {
       body.addClass('open-drawer');
       _this.openTo(_this.options.width, _this.options.transitionDuration);
+      _this.offset = _this.options.width;
     }, 1);
     _this.status = 'open';
     
@@ -56,6 +58,7 @@ var OffCanvas = function(elem, options) {
     _this.elem.removeClass('show');
     
     _this.openTo(0, _this.options.transitionDuration);
+    _this.offset = 0;
     
     _this.status = 'closed';
     
@@ -82,10 +85,17 @@ var OffCanvas = function(elem, options) {
       'transition-duration': time + 'ms',
       '-webkit-transition-duration': time + 'ms'
     });
-    $('.fixed').css({
-      'right': offset + 'px',
-      'transition-duration': time + 'ms',
-      '-webkit-transition-duration': time + 'ms'
+    $('.fixed').each(function() {
+      var data = $(this).data('fixedInfo');
+      if (data.leftOrRight === 'left') {
+        $(this).css('left', data.initialValue - offset);
+      } else if (data.leftOrRight === 'right') {
+        $(this).css('right', data.initialValue + offset);
+      }
+      $(this).css({
+        'transition-duration': time + 'ms',
+        '-webkit-transition-duration': time + 'ms'
+      });
     });
     _this.elem.css({
       'right': offset - _this.options.width + 'px',
@@ -119,10 +129,31 @@ var OffCanvas = function(elem, options) {
     }
   }
   
+  function prepeareFixedElements() {
+    $('.fixed').each(function() {
+      var data = {
+        leftOrRight: null,
+        initialValue: null,
+      };
+      
+      if ($(this).css('left') !== 'auto') {
+        data.leftOrRight = 'left';
+        data.initialValue = parseInt($(this).css('left'));
+      } else if ($(this).css('right') !== 'auto') {
+        data.leftOrRight = 'right';
+        data.initialValue = parseInt($(this).css('right'));
+      }
+      
+      $(this).data('fixedInfo', data);
+    });
+  }
+  
   _this.elem.css({
     width: _this.options.width + 'px',
     right: -_this.options.width + 'px'
   });
+  
+  prepeareFixedElements();
   
   $(window).on('resize.offcanvas', function() {
     checkBreakpoint();
