@@ -8,9 +8,6 @@ body.open-drawer {
 body.open-drawer .offcanvas-overlay {
   opacity: 1;
 }
-body.open-drawer button.offcanvas-trigger:before {
-  content: "\e608";
-}
 body.animate-drawer {
   -webkit-transition: left .5s, right .5s;
           transition: left .5s, right .5s;
@@ -31,21 +28,6 @@ body.animate-drawer .offcanvas-overlay {
   display: none;
   -webkit-transition: opacity .5s;
           transition: opacity .5s;
-}
-
-button.offcanvas-trigger {
-  font-family: 'OI-icons';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-button.offcanvas-trigger:before {
-  content: "\e616";
 }
 
 .fixed {

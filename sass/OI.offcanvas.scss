@@ -10,12 +10,6 @@ body {
     .offcanvas-overlay {
       opacity: 1;
     }
-    
-    button.offcanvas-trigger {
-      &:before {
-        content: "\e608";
-      }
-    }
   }
   
   &.animate-drawer {
@@ -38,22 +32,6 @@ body {
   opacity: 0;
   display: none;
   transition: opacity .5s;
-}
-
-button.offcanvas-trigger {
-  font-family: 'OI-icons';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  
-  &:before {
-    content: "\e616";
-  }
 }
 
 .fixed {
