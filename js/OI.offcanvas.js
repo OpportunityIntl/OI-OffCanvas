@@ -14,6 +14,7 @@ var OffCanvas = function(elem, options) {
   this.elem = $(elem);
   this.status = 'closed';
   this.offset = 0;
+  this.width = null;
 
   this.options = $.extend({
     trigger: $('.offcanvas-trigger'),
@@ -37,8 +38,8 @@ var OffCanvas = function(elem, options) {
     _this.elem.addClass('animate');
     setTimeout(function() {
       body.addClass('open-drawer');
-      _this.openTo(_this.options.width, _this.options.transitionDuration);
-      _this.offset = _this.options.width;
+      _this.openTo(_this.width, _this.options.transitionDuration);
+      _this.offset = _this.width;
     }, 1);
     _this.status = 'open';
     
@@ -98,7 +99,7 @@ var OffCanvas = function(elem, options) {
       });
     });
     _this.elem.css({
-      'right': offset - _this.options.width + 'px',
+      'right': offset - _this.width + 'px',
       'transition-duration': time + 'ms',
       '-webkit-transition-duration': time + 'ms'
     });
@@ -148,14 +149,38 @@ var OffCanvas = function(elem, options) {
     });
   }
   
-  _this.elem.css({
-    width: _this.options.width + 'px',
-    right: -_this.options.width + 'px'
-  });
+  function sizeDrawer() {
+    _this.elem.css({
+      'width': _this.width + 'px',
+      'right': -_this.width + 'px'
+    });
+    
+    if (_this.status === 'open') {
+      _this.openTo(_this.width, 0);
+    }
+  }
+  
+  function calculateWidth() {
+    switch(typeof _this.options.width) {
+      case 'function':
+        _this.width = _this.options.width.call(_this, _this.elem);
+        break;
+      case 'string':
+        _this.width = (parseInt(_this.options.width) / 100) * body.width();
+        break;
+      case 'number':
+        _this.width = _this.options.width;
+        break;
+    }
+  }
   
   prepareFixedElements();
+  calculateWidth();
+  sizeDrawer();
   
   $(window).on('resize.offcanvas', function() {
     checkBreakpoint();
+    calculateWidth();
+    sizeDrawer();
   });
 };
