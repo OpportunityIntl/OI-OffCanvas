@@ -129,7 +129,7 @@ var OffCanvas = function(elem, options) {
     }
   }
   
-  function prepeareFixedElements() {
+  function prepareFixedElements() {
     $('.fixed').each(function() {
       var data = {
         leftOrRight: null,
@@ -153,7 +153,7 @@ var OffCanvas = function(elem, options) {
     right: -_this.options.width + 'px'
   });
   
-  prepeareFixedElements();
+  prepareFixedElements();
   
   $(window).on('resize.offcanvas', function() {
     checkBreakpoint();
