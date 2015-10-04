@@ -5,13 +5,7 @@ body {
   right: 0;
   
   &.open-drawer {
-    right: $drawer-width;
-    left: inherit;
     overflow: hidden;
-    
-    .fixed {
-      right: $drawer-width;
-    }
     
     .offcanvas-overlay {
       opacity: 1;
@@ -74,9 +68,7 @@ button.offcanvas-trigger {
   display: none;
   position: fixed;
   top: 0;
-  right: -$drawer-width;
   z-index: 1;
-  width: $drawer-width;
   height: 100%;
   background-color: #fff;
   overflow-y: scroll;
@@ -85,9 +77,5 @@ button.offcanvas-trigger {
   &.animate {
     display: block;
     transition: left .5s, right .5s;
-  }
-  
-  &.show {
-    right: 0;
   }
 }

@@ -18,6 +18,8 @@ var OffCanvas = function(elem, options) {
     trigger: $('.offcanvas-trigger'),
     overlay: $('.offcanvas-overlay'),
     breakpoint: null,
+    width: 300,
+    transitionDuration: 500,
     beforeOpen: function() {},
     afterOpen: function() {},
     beforeClose: function() {},
@@ -34,7 +36,7 @@ var OffCanvas = function(elem, options) {
     _this.elem.addClass('animate');
     setTimeout(function() {
       body.addClass('open-drawer');
-      _this.elem.addClass('show');
+      _this.openTo(_this.options.width, _this.options.transitionDuration);
     }, 1);
     _this.status = 'open';
     
@@ -42,7 +44,7 @@ var OffCanvas = function(elem, options) {
     
     setTimeout(function() {
       _this.options.afterOpen.call(_this, _this.elem);
-    }, 500);
+    }, _this.options.transitionDuration);
   };
   
   this.close = function() {
@@ -53,6 +55,8 @@ var OffCanvas = function(elem, options) {
     body.removeClass('open-drawer');
     _this.elem.removeClass('show');
     
+    _this.openTo(0, _this.options.transitionDuration);
+    
     _this.status = 'closed';
     
     unbindCloseHandlers();
@@ -61,7 +65,7 @@ var OffCanvas = function(elem, options) {
       body.removeClass('animate-drawer');
       _this.elem.removeClass('animate');
       _this.options.afterClose.call(_this, _this.elem);
-    }, 500);
+    }, _this.options.transitionDuration);
   };
   
   this.options.trigger.on('click', function() {
@@ -71,6 +75,24 @@ var OffCanvas = function(elem, options) {
       _this.open();
     }
   });
+  
+  this.openTo = function(offset, time) {
+    body.css({
+      'right': offset + 'px',
+      'transition-duration': time + 'ms',
+      '-webkit-transition-duration': time + 'ms'
+    });
+    $('.fixed').css({
+      'right': offset + 'px',
+      'transition-duration': time + 'ms',
+      '-webkit-transition-duration': time + 'ms'
+    });
+    _this.elem.css({
+      'right': offset - _this.options.width + 'px',
+      'transition-duration': time + 'ms',
+      '-webkit-transition-duration': time + 'ms'
+    });
+  };
   
   function bindCloseHandlers() {
     $(document).bind('keyup.offcanvas', function (e) {
@@ -96,6 +118,11 @@ var OffCanvas = function(elem, options) {
       }
     }
   }
+  
+  _this.elem.css({
+    width: _this.options.width + 'px',
+    right: -_this.options.width + 'px'
+  });
   
   $(window).on('resize.offcanvas', function() {
     checkBreakpoint();

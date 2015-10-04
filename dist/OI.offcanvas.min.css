@@ -3,8 +3,7 @@
  */
 
 body { position: relative; right: 0; }
-body.open-drawer { right: 300px; left: inherit; overflow: hidden; }
-body.open-drawer .fixed { right: 300px; }
+body.open-drawer { overflow: hidden; }
 body.open-drawer .offcanvas-overlay { opacity: 1; }
 body.open-drawer button.offcanvas-trigger:before { content: "\e608"; }
 body.animate-drawer { -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }
@@ -18,6 +17,5 @@ button.offcanvas-trigger:before { content: "\e616"; }
 
 .fixed { right: 0; -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }
 
-.drawer { display: none; position: fixed; top: 0; right: -300px; z-index: 1; width: 300px; height: 100%; background-color: #fff; overflow-y: scroll; -webkit-overflow-scrolling: touch; }
+.drawer { display: none; position: fixed; top: 0; z-index: 1; height: 100%; background-color: #fff; overflow-y: scroll; -webkit-overflow-scrolling: touch; }
 .drawer.animate { display: block; -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }
-.drawer.show { right: 0; }
