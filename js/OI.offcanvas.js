@@ -22,6 +22,7 @@ var OffCanvas = function(elem, options) {
     breakpoint: null,
     width: 300,
     transitionDuration: 500,
+    displaceBody: true,
     beforeOpen: function() {},
     afterOpen: function() {},
     beforeClose: function() {},
@@ -82,23 +83,25 @@ var OffCanvas = function(elem, options) {
   });
   
   this.openTo = function(offset, time) {
-    body.css({
-      'right': offset + 'px',
-      'transition-duration': time + 'ms',
-      '-webkit-transition-duration': time + 'ms'
-    });
-    $('.fixed').each(function() {
-      var data = $(this).data('fixedInfo');
-      if (data.leftOrRight === 'left') {
-        $(this).css('left', data.initialValue - offset);
-      } else if (data.leftOrRight === 'right') {
-        $(this).css('right', data.initialValue + offset);
-      }
-      $(this).css({
+    if (_this.options.displaceBody) {
+      body.css({
+        'right': offset + 'px',
         'transition-duration': time + 'ms',
         '-webkit-transition-duration': time + 'ms'
       });
-    });
+      $('.fixed').each(function() {
+        var data = $(this).data('fixedInfo');
+        if (data.leftOrRight === 'left') {
+          $(this).css('left', data.initialValue - offset);
+        } else if (data.leftOrRight === 'right') {
+          $(this).css('right', data.initialValue + offset);
+        }
+        $(this).css({
+          'transition-duration': time + 'ms',
+          '-webkit-transition-duration': time + 'ms'
+        });
+      });
+    }
     _this.elem.css({
       'right': offset - _this.width + 'px',
       'transition-duration': time + 'ms',
