@@ -138,26 +138,28 @@ var OffCanvas = function(elem, options) {
   }
   
   function prepareDisplacedElements() {
-    $('.fixed').each(function() {
-      var data = {
-        leftOrRight: null,
-        initialValue: null,
-      };
+    if (_this.options.displaceBody) {
+      $('.fixed').each(function() {
+        var data = {
+          leftOrRight: null,
+          initialValue: null,
+        };
+        
+        if ($(this).css('left') !== 'auto') {
+          data.leftOrRight = 'left';
+          data.initialValue = parseInt($(this).css('left'));
+        } else if ($(this).css('right') !== 'auto') {
+          data.leftOrRight = 'right';
+          data.initialValue = parseInt($(this).css('right'));
+        }
+        
+        $(this).data('fixedInfo', data);
+      });
       
-      if ($(this).css('left') !== 'auto') {
-        data.leftOrRight = 'left';
-        data.initialValue = parseInt($(this).css('left'));
-      } else if ($(this).css('right') !== 'auto') {
-        data.leftOrRight = 'right';
-        data.initialValue = parseInt($(this).css('right'));
-      }
-      
-      $(this).data('fixedInfo', data);
-    });
-    
-    var bodyStyle = {};
-    bodyStyle[_this.options.direction] = 0;
-    body.css(bodyStyle);
+      var bodyStyle = {};
+      bodyStyle[_this.options.direction] = 0;
+      body.css(bodyStyle);
+    }
   }
   
   function sizeDrawer() {
