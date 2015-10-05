@@ -1,6 +1,5 @@
 body {
   position: relative;
-  right: 0;
   -webkit-transition: left .5s, right .5s;
           transition: left .5s, right .5s;
 }

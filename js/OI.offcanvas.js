@@ -23,6 +23,7 @@ var OffCanvas = function(elem, options) {
     width: 300,
     transitionDuration: 500,
     displaceBody: true,
+    direction: 'right',
     beforeOpen: function() {},
     afterOpen: function() {},
     beforeClose: function() {},
@@ -84,29 +85,31 @@ var OffCanvas = function(elem, options) {
   
   this.openTo = function(offset, time) {
     if (_this.options.displaceBody) {
-      body.css({
-        'right': offset + 'px',
+      var bodyStyle = {
         'transition-duration': time + 'ms',
         '-webkit-transition-duration': time + 'ms'
-      });
+      };
+      bodyStyle[_this.options.direction] = offset + 'px';
+      body.css(bodyStyle);
+      
       $('.fixed').each(function() {
         var data = $(this).data('fixedInfo');
-        if (data.leftOrRight === 'left') {
-          $(this).css('left', data.initialValue - offset);
-        } else if (data.leftOrRight === 'right') {
-          $(this).css('right', data.initialValue + offset);
-        }
-        $(this).css({
+        var fixedStyle = {
           'transition-duration': time + 'ms',
           '-webkit-transition-duration': time + 'ms'
-        });
+        };
+        var polarity = (data.leftOrRight === 'left' ? -1 : 1) * (_this.options.direction === 'left' ? -1 : 1);
+        fixedStyle[data.leftOrRight] = data.initialValue + (polarity * offset) + 'px';
+        $(this).css(fixedStyle);
       });
     }
-    _this.elem.css({
-      'right': offset - _this.width + 'px',
+    
+    var drawerStyle = {
       'transition-duration': time + 'ms',
       '-webkit-transition-duration': time + 'ms'
-    });
+    };
+    drawerStyle[_this.options.direction] = offset - _this.width + 'px';
+    _this.elem.css(drawerStyle);
   };
   
   function bindCloseHandlers() {
@@ -134,7 +137,7 @@ var OffCanvas = function(elem, options) {
     }
   }
   
-  function prepareFixedElements() {
+  function prepareDisplacedElements() {
     $('.fixed').each(function() {
       var data = {
         leftOrRight: null,
@@ -151,13 +154,17 @@ var OffCanvas = function(elem, options) {
       
       $(this).data('fixedInfo', data);
     });
+    
+    var bodyStyle = {};
+    bodyStyle[_this.options.direction] = 0;
+    body.css(bodyStyle);
   }
   
   function sizeDrawer() {
-    _this.elem.css({
-      'width': _this.width + 'px',
-      'right': -_this.width + 'px'
-    });
+    var drawerStyle = {};
+    drawerStyle['width'] = _this.width + 'px';
+    drawerStyle[_this.options.direction] = -_this.width + 'px';
+    _this.elem.css(drawerStyle);
     
     if (_this.status === 'open') {
       _this.openTo(_this.width, 0);
@@ -178,7 +185,7 @@ var OffCanvas = function(elem, options) {
     }
   }
   
-  prepareFixedElements();
+  prepareDisplacedElements();
   calculateWidth();
   sizeDrawer();
   

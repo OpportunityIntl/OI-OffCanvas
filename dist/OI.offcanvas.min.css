@@ -2,7 +2,7 @@
  * Copyright (c) 2015 Opportunity International 
  */
 
-body { position: relative; right: 0; -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }
+body { position: relative; -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }
 
 .no-scroll { overflow: hidden; }
 
