@@ -36,10 +36,10 @@ var OffCanvas = function(elem, options) {
       return false;
     }
     
-    body.addClass('no-scroll');
     _this.options.overlay.addClass('show');
     _this.elem.addClass('show');
     setTimeout(function() {
+      body.addClass('no-scroll');
       _this.openTo(_this.width, _this.options.transitionDuration);
       _this.offset = _this.width;
     }, 1);
@@ -57,8 +57,6 @@ var OffCanvas = function(elem, options) {
       return false;
     }
     
-    body.removeClass('no-scroll');
-    
     _this.openTo(0, _this.options.transitionDuration);
     _this.offset = 0;
     
@@ -67,6 +65,7 @@ var OffCanvas = function(elem, options) {
     unbindCloseHandlers();
     
     setTimeout(function() {
+      body.removeClass('no-scroll');
       _this.options.overlay.removeClass('show');
       _this.elem.removeClass('show');
       _this.options.afterClose.call(_this, _this.elem);
