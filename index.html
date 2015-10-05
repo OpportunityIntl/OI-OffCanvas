@@ -15,10 +15,9 @@
         position: fixed;
         top: 0;
         left: 0;
-        right: 0;
+        width: 100%;
         background-color: #222;
         color: #fff;
-        width: 100%;
         height: 40px;
         z-index: 2;
       }
@@ -112,6 +111,7 @@
         <p class="small brand-gray">
           &copy; 2015 Opportunity International, a 501(c)3 nonprofit
         </p>
+        <button type="button" class="btn brand-orange block ghost close">Close</button>
       </div>
     </div>
     <section class="padding-3x-2x">
@@ -158,10 +158,39 @@
     <![endif]-->
 
     <script type="text/javascript" src="demo/weavr/OI.weavr.min.js"></script>
+    <script type="text/javascript" src="demo/hammer.min.js"></script>
     <script type="text/javascript" src="dist/OI.offcanvas.min.js"></script>
 
     <script>
-      drawer = new OffCanvas($('.drawer'));
+      drawer = new OffCanvas($('.drawer'), {
+        breakpoint: 960,
+        width: function() {
+          // make drawer a maximum of 300px wide, always making sure the trigger icon is still visible
+          return Math.min($('body').width() - $('.offcanvas-trigger').outerWidth(), 300);
+        },
+        beforeOpen: function() {
+          this.options.trigger.removeClass('icon-menu').addClass('icon-cross');
+        },
+        beforeClose: function() {
+          this.options.trigger.removeClass('icon-cross').addClass('icon-menu');
+        }
+      });
+      
+      var touch = new Hammer($('.drawer')[0]);
+      touch.on('panstart panmove panend', function(e) {
+        if (e.type === 'panmove') {
+          console.log(e);
+          if (e.angle < 15 && e.angle > -15) {
+            drawer.openTo(drawer.offset - e.deltaX, 0);
+          }
+        } else if (e.type === 'panend') {
+          if (e.deltaX > 100 || e.velocityX <= -0.5) {
+            drawer.close();
+          } else {
+            drawer.open();
+          }
+        }
+      }); 
     </script>
   </body>
 </html>
