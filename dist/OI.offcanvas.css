@@ -41,6 +41,7 @@ body {
   -webkit-overflow-scrolling: touch;
   -webkit-transition: left .5s, right .5s;
           transition: left .5s, right .5s;
+  box-sizing: content-box;
 }
 .drawer.show {
   display: block;

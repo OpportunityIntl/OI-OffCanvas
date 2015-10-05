@@ -39,6 +39,15 @@ body {
   -webkit-overflow-scrolling: touch;
   transition: left .5s, right .5s;
   
+  //
+  // IE9 has a bug that subtracts the width of the scrollbars from the defined width
+  // on fixed position elements with box-sizing: border-box. The workaround is
+  // to use content-box instead (on the drawer only). This means that we can't apply
+  // a border or padding to the drawer element without messing up the offcanvas layout.
+  // Instead, padding should be applied to a nested div.
+  //
+  box-sizing: content-box;
+  
   &.show {
     display: block;
   }
