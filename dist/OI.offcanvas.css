@@ -1,19 +1,12 @@
 body {
   position: relative;
   right: 0;
-}
-body.open-drawer {
-  overflow: hidden;
-}
-body.open-drawer .offcanvas-overlay {
-  opacity: 1;
-}
-body.animate-drawer {
   -webkit-transition: left .5s, right .5s;
           transition: left .5s, right .5s;
 }
-body.animate-drawer .offcanvas-overlay {
-  display: block;
+
+.no-scroll {
+  overflow: hidden;
 }
 
 .offcanvas-overlay {
@@ -28,6 +21,12 @@ body.animate-drawer .offcanvas-overlay {
   display: none;
   -webkit-transition: opacity .5s;
           transition: opacity .5s;
+}
+.offcanvas-overlay.animate {
+  display: block;
+}
+.offcanvas-overlay.show {
+  opacity: 1;
 }
 
 .fixed {
@@ -44,9 +43,9 @@ body.animate-drawer .offcanvas-overlay {
   background-color: #fff;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-}
-.drawer.animate {
-  display: block;
   -webkit-transition: left .5s, right .5s;
           transition: left .5s, right .5s;
+}
+.drawer.show {
+  display: block;
 }

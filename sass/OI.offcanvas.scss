@@ -3,22 +3,11 @@ $drawer-width: 300px;
 body {
   position: relative;
   right: 0;
-  
-  &.open-drawer {
-    overflow: hidden;
-    
-    .offcanvas-overlay {
-      opacity: 1;
-    }
-  }
-  
-  &.animate-drawer {
-    transition: left .5s, right .5s;
-    
-    .offcanvas-overlay {
-      display: block;
-    }
-  }
+  transition: left .5s, right .5s;
+}
+
+.no-scroll {
+  overflow: hidden;
 }
 
 .offcanvas-overlay {
@@ -32,6 +21,14 @@ body {
   opacity: 0;
   display: none;
   transition: opacity .5s;
+  
+  &.animate {
+    display: block;
+  }
+  
+  &.show {
+    opacity: 1;
+  }
 }
 
 .fixed {
@@ -47,9 +44,9 @@ body {
   background-color: #fff;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  transition: left .5s, right .5s;
   
-  &.animate {
+  &.show {
     display: block;
-    transition: left .5s, right .5s;
   }
 }

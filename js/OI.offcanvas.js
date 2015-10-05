@@ -34,10 +34,11 @@ var OffCanvas = function(elem, options) {
       return false;
     }
     
-    body.addClass('animate-drawer');
-    _this.elem.addClass('animate');
+    body.addClass('no-scroll');
+    _this.options.overlay.addClass('animate');
+    _this.elem.addClass('show');
     setTimeout(function() {
-      body.addClass('open-drawer');
+      _this.options.overlay.addClass('show');
       _this.openTo(_this.width, _this.options.transitionDuration);
       _this.offset = _this.width;
     }, 1);
@@ -55,8 +56,8 @@ var OffCanvas = function(elem, options) {
       return false;
     }
     
-    body.removeClass('open-drawer');
-    _this.elem.removeClass('show');
+    body.removeClass('no-scroll');
+    _this.options.overlay.removeClass('show');
     
     _this.openTo(0, _this.options.transitionDuration);
     _this.offset = 0;
@@ -66,8 +67,8 @@ var OffCanvas = function(elem, options) {
     unbindCloseHandlers();
     
     setTimeout(function() {
-      body.removeClass('animate-drawer');
-      _this.elem.removeClass('animate');
+      _this.options.overlay.removeClass('animate');
+      _this.elem.removeClass('show');
       _this.options.afterClose.call(_this, _this.elem);
     }, _this.options.transitionDuration);
   };

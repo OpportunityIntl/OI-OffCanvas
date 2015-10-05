@@ -2,15 +2,15 @@
  * Copyright (c) 2015 Opportunity International 
  */
 
-body { position: relative; right: 0; }
-body.open-drawer { overflow: hidden; }
-body.open-drawer .offcanvas-overlay { opacity: 1; }
-body.animate-drawer { -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }
-body.animate-drawer .offcanvas-overlay { display: block; }
+body { position: relative; right: 0; -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }
+
+.no-scroll { overflow: hidden; }
 
 .offcanvas-overlay { position: fixed; top: 0; left: 0; right: 0; z-index: 1; height: 100%; background-color: rgba(0, 0, 0, 0.7); opacity: 0; display: none; -webkit-transition: opacity .5s; transition: opacity .5s; }
+.offcanvas-overlay.animate { display: block; }
+.offcanvas-overlay.show { opacity: 1; }
 
 .fixed { -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }
 
-.drawer { display: none; position: fixed; top: 0; z-index: 1; height: 100%; background-color: #fff; overflow-y: scroll; -webkit-overflow-scrolling: touch; }
-.drawer.animate { display: block; -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }
+.drawer { display: none; position: fixed; top: 0; z-index: 1; height: 100%; background-color: #fff; overflow-y: scroll; -webkit-overflow-scrolling: touch; -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }
+.drawer.show { display: block; }
