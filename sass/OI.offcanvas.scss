@@ -21,12 +21,8 @@ body {
   display: none;
   transition: opacity .5s;
   
-  &.animate {
-    display: block;
-  }
-  
   &.show {
-    opacity: 1;
+    display: block;
   }
 }
 

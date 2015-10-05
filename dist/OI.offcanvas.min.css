@@ -7,8 +7,7 @@ body { position: relative; -webkit-transition: left .5s, right .5s; transition: 
 .no-scroll { overflow: hidden; }
 
 .offcanvas-overlay { position: fixed; top: 0; left: 0; right: 0; z-index: 1; height: 100%; background-color: rgba(0, 0, 0, 0.7); opacity: 0; display: none; -webkit-transition: opacity .5s; transition: opacity .5s; }
-.offcanvas-overlay.animate { display: block; }
-.offcanvas-overlay.show { opacity: 1; }
+.offcanvas-overlay.show { display: block; }
 
 .fixed { -webkit-transition: left .5s, right .5s; transition: left .5s, right .5s; }
 

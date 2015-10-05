@@ -21,11 +21,8 @@ body {
   -webkit-transition: opacity .5s;
           transition: opacity .5s;
 }
-.offcanvas-overlay.animate {
-  display: block;
-}
 .offcanvas-overlay.show {
-  opacity: 1;
+  display: block;
 }
 
 .fixed {

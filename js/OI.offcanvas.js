@@ -37,10 +37,9 @@ var OffCanvas = function(elem, options) {
     }
     
     body.addClass('no-scroll');
-    _this.options.overlay.addClass('animate');
+    _this.options.overlay.addClass('show');
     _this.elem.addClass('show');
     setTimeout(function() {
-      _this.options.overlay.addClass('show');
       _this.openTo(_this.width, _this.options.transitionDuration);
       _this.offset = _this.width;
     }, 1);
@@ -59,7 +58,6 @@ var OffCanvas = function(elem, options) {
     }
     
     body.removeClass('no-scroll');
-    _this.options.overlay.removeClass('show');
     
     _this.openTo(0, _this.options.transitionDuration);
     _this.offset = 0;
@@ -69,7 +67,7 @@ var OffCanvas = function(elem, options) {
     unbindCloseHandlers();
     
     setTimeout(function() {
-      _this.options.overlay.removeClass('animate');
+      _this.options.overlay.removeClass('show');
       _this.elem.removeClass('show');
       _this.options.afterClose.call(_this, _this.elem);
     }, _this.options.transitionDuration);
@@ -103,6 +101,12 @@ var OffCanvas = function(elem, options) {
         $(this).css(fixedStyle);
       });
     }
+    
+    _this.options.overlay.css({
+      'opacity': Math.min(Math.max(offset / _this.width, 0), 1),
+      'transition-duration': time + 'ms',
+      '-webkit-transition-duration': time + 'ms'
+    });
     
     var drawerStyle = {
       'transition-duration': time + 'ms',
