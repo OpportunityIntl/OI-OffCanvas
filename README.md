@@ -2,6 +2,8 @@
 Off-canvas menus for Opportunity International, built on jQuery and [Weavr](https://github.com/opportunityintl/Weavr).
 
 ## Usage
+
+### Getting started
 Load `OI.offcanvas.min.css` and `OI.offcanvas.min.js`. The CSS is really tiny (852 bytes), so you might want to concatenate it with another stylesheet to save on HTTP requests.
 
 The library expects the following markup:
@@ -23,11 +25,32 @@ You can initialize the library with a jQuery plugin or plain Javascript:
 </script>
 ```
 
-If you're initializing as a jQuery plugin, the OffCanvas instance is saved as data under the key `offcanvas` on the drawer element. You can retrieve the instance to access its public methods and properties. For example, to open the drawer manually:
+### Accessing public methods and properties
+
+The OffCanvas instance is saved as jQuery data under the key `offcanvas` on the drawer element. You can retrieve the instance to access its public methods and properties with `$('.drawer').data('offcanvas')`. If you initialized the library with plain javascript, you should have stored the instance in a variable. So, for example, to open the drawer manually:
 
 ```javascript
+// jQuery
 $('.drawer').data('offcanvas').open();
+
+// plain javascript, where OffCanvas instance was stored in var offcanvas
+offcanvas.open()
 ```
+
+### Opening the drawer
+
+The user can open the drawer by clicking on the defined trigger element (or elements, if a jQuery collection was passed as the trigger option). You can also call the instance's `open()` method to open it manually.
+
+### Closing the drawer
+
+The library has 4 defined ways a user can close the drawer. You can:
+
+1. Click the trigger element
+2. Click the overlay
+3. Press the escape key
+4. Click any element inside the drawer with a class of `close`.
+
+You can also call the instance's `close()` method to close it manually.
 
 ## Options
 Option | Type | Description
