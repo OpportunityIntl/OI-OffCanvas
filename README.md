@@ -85,13 +85,13 @@ Close the drawer.
 ## Public Properties
 Property | Type | Description
 ---------|------|------------
-elem | DOM object | The drawer element. Can be a DOM object, or a jQuery object.
+elem | jQuery object | The drawer element.
 status | string | The status of the drawer. Either `'open'` or `'closed'`.
 offset | number | The current offset of the drawer. A value of `0` means the drawer is closed. A positive value, e.g. `300`, means the drawer is open by 300px.
 width | number | The calculated width of the drawer, in pixels. The value of `options.width` is parsed and saved to this property when the instance is initiated and on window resize.
 
 ## Examples
-Let's say the site has a full navigation bar on desktop, but switches to an off-canvas menu below 960px. The drawer should have a max-width of 300px, but we want to make sure the trigger button is always visible (I'm looking at you, iPhone 5). Too add a little pizazz, we'll have the menu icon change to a close icon when the drawer is open.
+Let's say the site has a full navigation bar on desktop, but switches to an off-canvas menu below 960px. The drawer should have a max-width of 300px, but we want to make sure the trigger button is always visible (I'm looking at you, iPhone 5). To add a little pizazz, we'll have the menu icon change to a close icon when the drawer is open.
 
 ```javascript
 $('.drawer').offcanvas({
