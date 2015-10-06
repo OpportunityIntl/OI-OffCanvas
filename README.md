@@ -27,7 +27,7 @@ You can initialize the library with a jQuery plugin or plain Javascript:
 
 ### Accessing public methods and properties
 
-The OffCanvas instance is saved as jQuery data under the key `offcanvas` on the drawer element. You can retrieve the instance to access its public methods and properties with `$('.drawer').data('offcanvas')`. If you initialized the library with plain javascript, you should have stored the instance in a variable. So, for example, to open the drawer manually:
+If you used the jQuery plugin, the OffCanvas instance is saved as jQuery data under the key `offcanvas` on the drawer element. You can retrieve the instance to access its public methods and properties with `$('.drawer').data('offcanvas')`. If you initialized the library with plain javascript, you should have stored the instance in a variable. So, for example, to open the drawer manually:
 
 ```javascript
 // jQuery
