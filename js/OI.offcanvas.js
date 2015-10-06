@@ -179,7 +179,12 @@ var OffCanvas = function(elem, options) {
   function calculateWidth() {
     switch(typeof _this.options.width) {
       case 'function':
-        _this.width = _this.options.width.call(_this, _this.elem);
+        var value = _this.options.width.call(_this, _this.elem);
+        if (typeof value === 'number') {
+          _this.width = value;
+        } else if (typeof value === 'string') {
+          _this.width = (parseInt(value) / 100) * body.width();
+        }
         break;
       case 'string':
         _this.width = (parseInt(_this.options.width) / 100) * body.width();
