@@ -23,6 +23,12 @@ You can initialize the library with a jQuery plugin or plain Javascript:
 </script>
 ```
 
+If you're initializing as a jQuery plugin, the OffCanvas instance is saved as data under the key `offcanvas` on the drawer element. You can retrieve the instance to access its public methods and properties. For example, to open the drawer manually:
+
+```javascript
+$('.drawer').data('offcanvas').open();
+```
+
 ## Options
 Option | Type | Description
 -------|------|------------
@@ -60,3 +66,21 @@ elem | DOM object | The drawer element. Can be a DOM object, or a jQuery object.
 status | string | The status of the drawer. Either `'open'` or `'closed'`.
 offset | number | The current offset of the drawer. A value of `0` means the drawer is closed. A positive value, e.g. `300`, means the drawer is open by 300px.
 width | number | The calculated width of the drawer, in pixels. The value of `options.width` is parsed and saved to this property when the instance is initiated and on window resize.
+
+## Examples
+Let's say the site has a full navigation bar on desktop, but switches to an off-canvas menu below 960px. The drawer should have a max-width of 300px, but we want to make sure the trigger button is always visible (I'm looking at you, iPhone 5). Too add a little pizazz, we'll have the menu icon change to a close icon when the drawer is open.
+
+```javascript
+$('.drawer').offcanvas({
+  breakpoint: 960,
+  width: function(drawer) {
+    return Math.min($(window).width() - this.options.trigger.outerWidth(), 300);
+  },
+  beforeOpen: function(drawer) {
+    this.options.trigger.removeClass('icon-menu').addClass('icon-cross');
+  },
+  afterOpen: function(drawer) {
+    this.options.trigger.removeClass('icon-cross').addClass('icon-menu');
+  }
+})
+```
