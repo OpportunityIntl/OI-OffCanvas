@@ -19,7 +19,7 @@ You can initialize the library with a jQuery plugin or plain Javascript:
   $('.drawer').offcanvas({options});
 
   // plain Javascript
-  var offcanvas = new OffCanvas($('.drawer'), {options});
+  var offcanvas = new OffCanvas(document.querySelector('.drawer'), {options});
 </script>
 ```
 
@@ -56,7 +56,7 @@ Close the drawer.
 ## Public Properties
 Property | Type | Description
 ---------|------|------------
-elem | jQuery object | The drawer element
+elem | DOM object | The drawer element. Can be a DOM object, or a jQuery object.
 status | string | The status of the drawer. Either `'open'` or `'closed'`.
 offset | number | The current offset of the drawer. A value of `0` means the drawer is closed. A positive value, e.g. `300`, means the drawer is open by 300px.
 width | number | The calculated width of the drawer, in pixels. The value of `options.width` is parsed and saved to this property when the instance is initiated and on window resize.
