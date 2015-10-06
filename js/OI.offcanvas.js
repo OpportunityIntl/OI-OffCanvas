@@ -81,6 +81,7 @@ var OffCanvas = function(elem, options) {
   });
   
   this.openTo = function(offset, time) {
+    if (_this.status === 'closed') return;
     if (_this.options.displaceBody) {
       var bodyStyle = {
         'transition-duration': time + 'ms',
