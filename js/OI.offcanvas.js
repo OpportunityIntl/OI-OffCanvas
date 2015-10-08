@@ -24,6 +24,7 @@ var OffCanvas = function(elem, options) {
     transitionDuration: 500,
     displaceBody: true,
     direction: 'right',
+    zIndex: 2,
     beforeOpen: function() {},
     afterOpen: function() {},
     beforeClose: function() {},
@@ -196,9 +197,15 @@ var OffCanvas = function(elem, options) {
     }
   }
   
+  function setZIndex() {
+    _this.options.overlay.css('z-index', _this.options.zIndex);
+    _this.elem.css('z-index', _this.options.zIndex);
+  }
+  
   prepareDisplacedElements();
   calculateWidth();
   sizeDrawer();
+  setZIndex();
   
   $(window).on('resize.offcanvas', function() {
     checkBreakpoint();
