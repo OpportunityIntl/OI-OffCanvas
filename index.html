@@ -24,7 +24,7 @@
         z-index: 3;
       }
 
-      .offcanvas-trigger {
+      button.offcanvas-trigger {
         position: absolute;
         right: 0;
         width: 40px;
@@ -48,6 +48,23 @@
         border: solid 1px;
         color: #8f8e8c;
         margin-right: 10px;
+      }
+      
+      .social-bar {
+        position: fixed;
+        left: 0;
+        top: 50%;
+        margin-top: -65px;
+        border-top: solid 5px #611171;
+        border-bottom: solid 5px #611171;
+        border-right: solid 5px #611171;
+      }
+      
+      .social-bar .social-icon {
+        display: block;
+        margin: 0;
+        background-color: #fff;
+        border: none;
       }
     </style>
   </head>
@@ -117,10 +134,13 @@
       </div>
     </div>
     <section class="padding-3x-2x">
-      <div class="contained-960 centered body-copy">
+      <div class="contained-9 centered body-copy">
         <h1 class="align-center large brand-teal">Off-Canvas Demo</h1>
         <p class="large">
-          Food truck XOXO next level, pop-up letterpress before they sold out Intelligentsia. Post-ironic seitan banh mi, umami 8-bit pickled +1 asymmetrical selfies next level roof party single-origin coffee. 
+          This is a demonstration of Opportunity International's off-canvas menu library.
+          For more information and documentation,
+          <a href="https://github.com/OpportunityIntl/OI-OffCanvas">check out the
+          repo on GitHub.</a>
         </p>
         <h2>The first section</h2>
         <p>
@@ -152,8 +172,20 @@
         </p>
       </div>
     </section>
+    <footer class="padding-1x-2x brand-darkgray-bg">
+      <div class="contained-6 centered align-center">
+        <p class="small brand-gray">
+          ©2016 Opportunity International. <a href="https://github.com/OpportunityIntl/OI-OffCanvas">View source on GitHub</a>.
+        </p>
+      </div>
+    </footer>
+    <div class="social-bar fixed">
+      <div class="social-icon icon-facebook"></div>
+      <div class="social-icon icon-linkedin"></div>
+      <div class="social-icon icon-facebook"></div>
+    </div>
     
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="demo/jquery-1.11.3.min.js"></script>
 
     <!--[if lte IE 9]>
       <script type="text/javascript" src="weavr/OI.placeholder.min.js"></script>
@@ -164,11 +196,10 @@
     <script type="text/javascript" src="dist/OI.offcanvas.min.js"></script>
 
     <script>
-      drawer = new OffCanvas($('.drawer'), {
-        breakpoint: 960,
+      drawer = new OffCanvas(document.querySelector('.drawer'), {
         width: function() {
           // make drawer a maximum of 300px wide, always making sure the trigger icon is still visible
-          return Math.min($('body').width() - $('.offcanvas-trigger').outerWidth(), 300);
+          return Math.min($(window).width() - $('.offcanvas-trigger').outerWidth(), 300);
         },
         beforeOpen: function() {
           this.options.trigger.removeClass('icon-menu').addClass('icon-cross');
@@ -181,7 +212,6 @@
       var touch = new Hammer($('.drawer')[0]);
       touch.on('panstart panmove panend', function(e) {
         if (e.type === 'panmove') {
-          console.log(e);
           if (e.angle < 15 && e.angle > -15) {
             drawer.openTo(drawer.offset - e.deltaX, 0);
           }
