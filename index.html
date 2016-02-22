@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <title>Off-Canvas Demo</title>
+    <link rel="stylesheet" href="demo/weavr/OI.weavr.min.css">
+    <link rel="stylesheet" href="dist/OI.offcanvas.css">
+
+    <script src="//use.typekit.net/owg8owx.js"></script>
+    <script type="text/javascript">try {Typekit.load();} catch (e) {}</script>
+    
+    <style>
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #222;
+        color: #fff;
+        height: 40px;
+        z-index: 3;
+      }
+
+      button.offcanvas-trigger {
+        position: absolute;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+        text-align: center;
+        line-height: 40px;
+        color: #fff;
+      }
+      
+      .nav-placeholder {
+        height: 40px;
+      }
+      
+      .social-icon {
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        text-align: center;
+        border: solid 1px;
+        color: #8f8e8c;
+        margin-right: 10px;
+      }
+      
+      .social-bar {
+        position: fixed;
+        left: 0;
+        top: 50%;
+        margin-top: -65px;
+        border-top: solid 5px #611171;
+        border-bottom: solid 5px #611171;
+        border-right: solid 5px #611171;
+      }
+      
+      .social-bar .social-icon {
+        display: block;
+        margin: 0;
+        background-color: #fff;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="fixed">
+      <button type="button" class="reset offcanvas-trigger icon-menu"></button>
+    </nav>
+    <div class="nav-placeholder"></div>
+    <div class="offcanvas-overlay"></div>
+    <div class="drawer">
+      <div class="padding-2x">
+        <h2 class="small">Menu</h2>
+        <hr>
+        <ul class="no-list-style">
+          <li>
+            <a>About Us</a>
+          </li>
+          <li>
+            <a>What We Do</a>
+          </li>
+          <li>
+            <a>What You Can Do</a>
+          </li>
+          <li>
+            <a>News</a>
+          </li>
+        </ul>
+        <hr>
+        <h3 class="small brand-green">Subscribe to our Newsletter</h3>
+        <p class="small">
+          Get updates, news and stories from our work around the world!
+        </p>
+        <form>
+          <div class="row small-gutter">
+            <div class="col col-12 t-col-12 m-col-12">
+              <input type="text" name="first_name" value="" placeholder="First name">
+            </div>
+          </div>
+          <div class="row small-gutter">
+            <div class="col col-12 t-col-12 m-col-12">
+              <input type="email" name="email" value="" placeholder="Email address">
+            </div>
+          </div>
+          <div class="row small-gutter">
+            <div class="col col-12 t-col-12 m-col-12">
+              <input type="submit" value="Subscribe" class="btn block brand-green-bg">
+            </div>
+          </div>
+        </form>
+        <hr>
+        <h3 class="small">Follow Us</h3>
+        <span class="social-icon icon-facebook"></span>
+        <span class="social-icon icon-twitter"></span>
+        <span class="social-icon icon-linkedin"></span>
+        <hr>
+        <p class="small brand-gray">
+          550 West Van Buren Street<br>
+          Chicago, IL 60607
+        </p>
+        <p class="small brand-gray">
+          1-800-793-4500
+        </p>
+        <p class="small brand-gray">
+          &copy; 2015 Opportunity International, a 501(c)3 nonprofit
+        </p>
+        <button type="button" class="btn brand-orange block ghost close">Close</button>
+      </div>
+    </div>
+    <section class="padding-3x-2x">
+      <div class="contained-9 centered body-copy">
+        <h1 class="align-center large brand-teal">Off-Canvas Demo</h1>
+        <p class="large">
+          This is a demonstration of Opportunity International's off-canvas menu library.
+          For more information and documentation,
+          <a href="https://github.com/OpportunityIntl/OI-OffCanvas">check out the
+          repo on GitHub.</a>
+        </p>
+        <h2>The first section</h2>
+        <p>
+          Quinoa shabby chic Austin keytar, next level banh mi cold-pressed craft beer yr Intelligentsia distillery asymmetrical forage small batch authentic. Flannel gastropub Bushwick fingerstache disrupt drinking vinegar, fashion axe 8-bit hoodie before they sold out street art tousled distillery raw denim. Quinoa iPhone Pitchfork before they sold out, raw denim chillwave Austin artisan Helvetica yr. Sartorial whatever tattooed, tote bag post-ironic drinking vinegar mixtape pop-up Brooklyn kale chips tofu asymmetrical Pinterest. Bespoke scenester Schlitz 3 wolf moon viral. Kale chips cornhole tilde yr, taxidermy deep v drinking vinegar +1. +1 stumptown small batch artisan mumblecore shabby chic, wolf XOXO.
+        </p>
+        <aside>
+          <blockquote>
+            <p>
+              Before they sold out cray VHS Austin taxidermy Helvetica, Echo Park stumptown cred 8-bit Pitchfork umami.
+            </p>
+            <cite>hipsum.co</cite>
+          </blockquote>
+        </aside>
+        <p>
+          Umami disrupt VHS Austin Odd Future American Apparel post-ironic meditation, leggings +1 kale chips lumbersexual. Stumptown hoodie 90's, mustache McSweeney's aesthetic YOLO readymade banh mi Brooklyn bicycle rights PBR&B sustainable Etsy. Aesthetic VHS wolf, small batch scenester cardigan yr YOLO tote bag dreamcatcher street art. Odd Future trust fund church-key, chambray Helvetica cardigan occupy blog. Cronut sartorial art party small batch fashion axe banh mi ugh meh, biodiesel chambray crucifix. Sriracha wayfarers semiotics, Austin bespoke organic Bushwick fanny pack Vice fashion axe. +1 meggings cardigan, tofu put a bird on it paleo XOXO crucifix DIY irony High Life Etsy twee trust fund hoodie.
+        </p>
+        <h2>The second section</h2>
+        <p>
+          Banh mi tofu High Life PBR&B freegan 3 wolf moon, cardigan bitters direct trade VHS street art. Sriracha selvage Wes Anderson small batch, lomo irony Etsy cardigan. McSweeney's High Life tofu polaroid, typewriter locavore post-ironic shabby chic Neutra mixtape pug readymade art party banjo. Pork belly letterpress crucifix vinyl, distillery put a bird on it gastropub tilde selvage semiotics Intelligentsia chia Blue Bottle VHS. Synth master cleanse cray kogi mlkshk kale chips, keytar post-ironic seitan McSweeney's gluten-free meh PBR&B YOLO taxidermy. Blue Bottle Thundercats letterpress, tote bag kale chips PBR&B Neutra normcore ethical health goth occupy. Keffiyeh flexitarian fanny pack, umami ugh Schlitz Kickstarter American Apparel polaroid lomo deep v retro PBR swag you probably haven't heard of them.
+        </p>
+        <p>
+          Kogi bitters Kickstarter hella biodiesel selvage. Meggings keytar Schlitz lo-fi trust fund skateboard, Truffaut butcher DIY distillery. 8-bit beard mumblecore kogi, bitters disrupt Austin tote bag Brooklyn Thundercats wayfarers hashtag trust fund. Sustainable cray yr twee. Etsy blog McSweeney's Brooklyn paleo actually quinoa polaroid, umami craft beer letterpress try-hard. Hoodie fanny pack drinking vinegar Shoreditch street art, beard Kickstarter Etsy next level Tumblr master cleanse mustache heirloom vinyl mumblecore. Cray tofu Marfa, Intelligentsia master cleanse blog Blue Bottle hella Carles trust fund.
+        </p>
+        <p>
+          Church-key Neutra roof party bespoke tote bag. Post-ironic slow-carb sriracha Marfa skateboard pug selfies. Sartorial shabby chic deep v, fanny pack High Life photo booth wolf 8-bit fashion axe bitters McSweeney's tofu readymade retro. 8-bit pork belly wayfarers, seitan disrupt raw denim Thundercats beard Pitchfork quinoa Shoreditch. Distillery freegan cliche street art, paleo scenester lomo aesthetic ethical cardigan cred Pinterest. Keffiyeh seitan typewriter four loko. Taxidermy DIY food truck Austin.
+        </p>
+        <p>
+          DIY Etsy cornhole, banjo salvia crucifix Wes Anderson church-key PBR&B Carles kogi Echo Park listicle four loko. Chia messenger bag artisan umami, VHS bicycle rights put a bird on it vinyl hoodie 3 wolf moon mumblecore fixie authentic vegan. Jean shorts Intelligentsia locavore migas YOLO, PBR&B brunch letterpress beard. Austin migas artisan, biodiesel normcore chillwave pug brunch Odd Future 8-bit chia cronut meggings try-hard. Drinking vinegar put a bird on it American Apparel, mumblecore Thundercats chambray listicle Tumblr literally lumbersexual Shoreditch paleo whatever. Forage Austin church-key Echo Park master cleanse, retro Pitchfork heirloom readymade art party meggings. American Apparel quinoa photo booth Kickstarter yr letterpress.
+        </p>
+      </div>
+    </section>
+    <footer class="padding-1x-2x brand-darkgray-bg">
+      <div class="contained-6 centered align-center">
+        <p class="small brand-gray">
+          ©2016 Opportunity International. <a href="https://github.com/OpportunityIntl/OI-OffCanvas">View source on GitHub</a>.
+        </p>
+      </div>
+    </footer>
+    <div class="social-bar fixed">
+      <div class="social-icon icon-facebook"></div>
+      <div class="social-icon icon-linkedin"></div>
+      <div class="social-icon icon-facebook"></div>
+    </div>
+    
+    <script type="text/javascript" src="demo/jquery-1.11.3.min.js"></script>
+
+    <!--[if lte IE 9]>
+      <script type="text/javascript" src="weavr/OI.placeholder.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="demo/weavr/OI.weavr.min.js"></script>
+    <script type="text/javascript" src="demo/hammer.min.js"></script>
+    <script type="text/javascript" src="dist/OI.offcanvas.min.js"></script>
+
+    <script>
+      drawer = new OffCanvas(document.querySelector('.drawer'), {
+        width: function() {
+          // make drawer a maximum of 300px wide, always making sure the trigger icon is still visible
+          return Math.min($(window).width() - $('.offcanvas-trigger').outerWidth(), 300);
+        },
+        beforeOpen: function() {
+          this.options.trigger.removeClass('icon-menu').addClass('icon-cross');
+        },
+        beforeClose: function() {
+          this.options.trigger.removeClass('icon-cross').addClass('icon-menu');
+        }
+      });
+      
+      var touch = new Hammer($('.drawer')[0]);
+      touch.on('panstart panmove panend', function(e) {
+        if (e.type === 'panmove') {
+          if (e.angle < 15 && e.angle > -15) {
+            drawer.openTo(drawer.offset - e.deltaX, 0);
+          }
+        } else if (e.type === 'panend') {
+          if (e.deltaX > 100 || e.velocityX <= -0.5) {
+            drawer.close();
+          } else {
+            drawer.open();
+          }
+        }
+      }); 
+    </script>
+  </body>
+</html>
